@@ -39,18 +39,47 @@ const createObjectCount = (string) => {
     return counts;
 }
 
+const dataNormalize = (data) => {
+    data.sort();
+
+    data = data.filter((element) => {
+        return element !== " ";
+    });
+
+    data = data.filter((element) => {
+        return element !== "";
+    });
+
+    return data;
+}
+
 const createContent = (object, id) => {
+    const element = document.getElementById(id);
+    const div = document.createElement("div");
+
+    let keys = [];
+
     for (let item in object) {
-        const span = document.createElement("p");
-
-        const content = `"${item}": ${object[item]}, `;
-
-        span.innerText = content;
-
-        const element = document.getElementById(id);
-
-        element.appendChild(span);
+        if (! keys.includes(item)) {
+            keys.push(item);
+        }
     }
+
+    keys = dataNormalize(keys);
+
+    for (let i = 0; i < keys.length; i++) {
+        let item = keys[i];
+
+        const paragraph = document.createElement("p");
+
+        const content = `"${item}": ${object[item]} `;
+
+        paragraph.innerText = content;
+
+        div.appendChild(paragraph);
+    }
+
+    element.appendChild(div);
 }
 
 const countFrequency = () => {

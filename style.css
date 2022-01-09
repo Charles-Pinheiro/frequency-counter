@@ -58,6 +58,7 @@ button:hover {
     background-color: rgba(0,0,0,0.6);
     box-sizing: border-box;
     padding: 1rem 2rem;
+    margin-bottom: 2rem;
 }
 
 #lettersBox, #wordsBox {
@@ -76,4 +77,8 @@ p {
 .letterWord {
     color: #000;
     margin-right: 100%;
+}
+
+#lettersBox p:not(:last-child)::after, #wordsBox p:not(:last-child)::after {
+    content: ", ";
 }
