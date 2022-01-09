@@ -8,8 +8,19 @@ const TextNormalize = (text) => {
 }
 
 const resetData = () => {
-    document.getElementById("lettersBox").innerHTML = "";
+    let letters = document.createElement("p");
+    letters.classList.add("letterWord");
+    letters.innerHTML = "Letras:";
+
+    let words = document.createElement("p");
+    words.classList.add("letterWord");
+    words.innerHTML = "Palavras:";
+
+    document.getElementById("lettersBox").innerText = "";
+    document.getElementById("lettersBox").appendChild(letters);
+
     document.getElementById("wordsBox").innerHTML = "";
+    document.getElementById("wordsBox").appendChild(words);
 }
 
 const createObjectCount = (string) => {
